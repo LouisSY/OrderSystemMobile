@@ -11,10 +11,7 @@ class NetworkOrderManager: ObservableObject {
     @Published var orderDetails: [OrderDetailsItem] = []
     
     func fetchCSV() {
-        let currentDateTime = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        let dateString = formatter.string(from: currentDateTime)
+        let dateString = Date.now.toString()
 
         guard let url = URL(string: "http://raspberrypi.local:8360/order/\(dateString)") else {
             print("Invalid URL")

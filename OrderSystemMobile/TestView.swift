@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct TestView: View {
-    @State private var date = Date()
+    @State private var dates: Set<DateComponents> = []
 
     var body: some View {
-        DatePicker(
-            "Start Date",
-            selection: $date,
-            displayedComponents: [.date]
-        )
-        .datePickerStyle(.compact)
+        VStack {
+            MultiDatePicker("Dates Available", selection: $dates)
+                .padding()
+        }
+        
     }
 }
 

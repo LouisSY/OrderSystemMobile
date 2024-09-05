@@ -15,9 +15,7 @@ class NetworkStatisticsManager: ObservableObject {
     @Published var orderDetail: [ProductAmount] = []
 
     func fetchStatisticsJson(date: Date) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        let dateString = formatter.string(from: date)
+        let dateString = date.toString()
         print("looking for date \(dateString)")
         
         guard let url = URL(string: "http://raspberrypi.local:8360/statistics/\(dateString)") else {
@@ -75,7 +73,7 @@ class NetworkStatisticsManager: ObservableObject {
 
 
 /// 每种收入方式的收入
-struct IncomeSummaryItem: Codable, Identifiable {
+struct IncomeSummaryItem: Codable, Identifiable, Hashable {
     let id: UUID = UUID()
     let category: String
     let income: String
@@ -86,7 +84,7 @@ struct IncomeSummaryItem: Codable, Identifiable {
 }
 
 /// 每个产品的数量
-struct ProductAmount: Codable, Comparable, Identifiable {
+struct ProductAmount: Codable, Comparable, Identifiable, Hashable {
     let id: UUID = UUID()
     let productName: String
     let quantity: String
@@ -110,7 +108,7 @@ struct ProductAmount: Codable, Comparable, Identifiable {
 
 
 /// 接收到的jsonString的内容
-struct StatisticsData: Codable {
+struct StatisticsData: Codable, Hashable {
     let incomeSummary: [IncomeSummaryItem]
     var incomeSum: String
     var orderNum: Int

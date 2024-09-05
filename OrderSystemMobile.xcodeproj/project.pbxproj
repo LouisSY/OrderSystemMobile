@@ -14,6 +14,8 @@
 		1A42AA312C87FC760056CFD1 /* BubbleIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A42AA302C87FC760056CFD1 /* BubbleIcon.swift */; };
 		1A42AA332C88344E0056CFD1 /* NewCardOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A42AA322C88344E0056CFD1 /* NewCardOperation.swift */; };
 		1A46806F2C896D3B00D8BD61 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A46806E2C896D3B00D8BD61 /* TestView.swift */; };
+		1A4680722C8991AD00D8BD61 /* OneDayStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4680712C8991AD00D8BD61 /* OneDayStatisticsView.swift */; };
+		1A4680742C89926600D8BD61 /* MultipleDaysStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4680732C89926600D8BD61 /* MultipleDaysStatisticsView.swift */; };
 		1A5EACB72C7859BE007971F8 /* SendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5EACB62C7859BE007971F8 /* SendRequest.swift */; };
 		1A5EACB92C7859E0007971F8 /* URLRequestStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5EACB82C7859E0007971F8 /* URLRequestStructs.swift */; };
 		1A5EACC32C786110007971F8 /* OrderTotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5EACC22C786110007971F8 /* OrderTotalView.swift */; };
@@ -21,6 +23,8 @@
 		1A7BC9A32C8741990023B898 /* OperationButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7BC9A22C8741990023B898 /* OperationButtonView.swift */; };
 		1A99992B2C7AD3770094D80A /* PhoneNumFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A99992A2C7AD3770094D80A /* PhoneNumFormatter.swift */; };
 		1A9999302C7AD5E30094D80A /* AmountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A99992F2C7AD5E30094D80A /* AmountFormatter.swift */; };
+		1A9D841F2C89B26C00406B31 /* MultipleDaysStatisticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9D841E2C89B26C00406B31 /* MultipleDaysStatisticsManager.swift */; };
+		1A9D84212C89D84B00406B31 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9D84202C89D84B00406B31 /* Date+Extensions.swift */; };
 		1AAB97432C79AA3300160C45 /* ProductCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB97422C79AA3300160C45 /* ProductCategory.swift */; };
 		1AB974FD2C7DAA680059AFA3 /* MenuImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB974FC2C7DAA680059AFA3 /* MenuImageView.swift */; };
 		1AC58B432C7885380044089B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AC58B412C7885380044089B /* Localizable.strings */; };
@@ -54,6 +58,8 @@
 		1A42AA322C88344E0056CFD1 /* NewCardOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardOperation.swift; sourceTree = "<group>"; };
 		1A46806E2C896D3B00D8BD61 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		1A4680702C8989C500D8BD61 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		1A4680712C8991AD00D8BD61 /* OneDayStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDayStatisticsView.swift; sourceTree = "<group>"; };
+		1A4680732C89926600D8BD61 /* MultipleDaysStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleDaysStatisticsView.swift; sourceTree = "<group>"; };
 		1A5EACB62C7859BE007971F8 /* SendRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendRequest.swift; sourceTree = "<group>"; };
 		1A5EACB82C7859E0007971F8 /* URLRequestStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestStructs.swift; sourceTree = "<group>"; };
 		1A5EACC22C786110007971F8 /* OrderTotalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTotalView.swift; sourceTree = "<group>"; };
@@ -61,6 +67,8 @@
 		1A7BC9A22C8741990023B898 /* OperationButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationButtonView.swift; sourceTree = "<group>"; };
 		1A99992A2C7AD3770094D80A /* PhoneNumFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumFormatter.swift; sourceTree = "<group>"; };
 		1A99992F2C7AD5E30094D80A /* AmountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountFormatter.swift; sourceTree = "<group>"; };
+		1A9D841E2C89B26C00406B31 /* MultipleDaysStatisticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleDaysStatisticsManager.swift; sourceTree = "<group>"; };
+		1A9D84202C89D84B00406B31 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		1AAB97422C79AA3300160C45 /* ProductCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCategory.swift; sourceTree = "<group>"; };
 		1AB974FC2C7DAA680059AFA3 /* MenuImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuImageView.swift; sourceTree = "<group>"; };
 		1AC58B422C7885380044089B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -109,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				1AD2629D2C77497500AF3E55 /* View+Extensions.swift */,
+				1A9D84202C89D84B00406B31 /* Date+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -121,6 +130,7 @@
 				1AD2629F2C774A0E00AF3E55 /* NetworkMenuManager.swift */,
 				1A5EACC42C78613C007971F8 /* NetworkOrderManager.swift */,
 				1AC58B462C78891F0044089B /* NetworkStatisticsManager.swift */,
+				1A9D841E2C89B26C00406B31 /* MultipleDaysStatisticsManager.swift */,
 			);
 			path = URLRequest;
 			sourceTree = "<group>";
@@ -175,6 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				1AC58B442C7888FD0044089B /* StatisticsView.swift */,
+				1A4680712C8991AD00D8BD61 /* OneDayStatisticsView.swift */,
+				1A4680732C89926600D8BD61 /* MultipleDaysStatisticsView.swift */,
 			);
 			name = StatisticsPage;
 			sourceTree = "<group>";
@@ -327,6 +339,7 @@
 				1AD2628F2C7745E900AF3E55 /* CartManager.swift in Sources */,
 				1A42AA332C88344E0056CFD1 /* NewCardOperation.swift in Sources */,
 				1A7BC9A32C8741990023B898 /* OperationButtonView.swift in Sources */,
+				1A4680742C89926600D8BD61 /* MultipleDaysStatisticsView.swift in Sources */,
 				1A5EACB92C7859E0007971F8 /* URLRequestStructs.swift in Sources */,
 				1A5EACC32C786110007971F8 /* OrderTotalView.swift in Sources */,
 				1A3F8F252C80765C001D631E /* AccountInfoView.swift in Sources */,
@@ -336,15 +349,18 @@
 				1A3F8F1F2C804FEF001D631E /* NewVIPView.swift in Sources */,
 				1A9999302C7AD5E30094D80A /* AmountFormatter.swift in Sources */,
 				1AB974FD2C7DAA680059AFA3 /* MenuImageView.swift in Sources */,
+				1A9D841F2C89B26C00406B31 /* MultipleDaysStatisticsManager.swift in Sources */,
 				1A99992B2C7AD3770094D80A /* PhoneNumFormatter.swift in Sources */,
 				1AD262972C7747FC00AF3E55 /* ToolbarView.swift in Sources */,
 				1A3F8F232C807266001D631E /* VIPLoginView.swift in Sources */,
 				1AD262952C77477700AF3E55 /* ViewManager.swift in Sources */,
 				1A42AA312C87FC760056CFD1 /* BubbleIcon.swift in Sources */,
 				1AD2627C2C7744C800AF3E55 /* OrderSystemMobileApp.swift in Sources */,
+				1A9D84212C89D84B00406B31 /* Date+Extensions.swift in Sources */,
 				1AD2628C2C77458300AF3E55 /* OperationListView.swift in Sources */,
 				1A3F8F212C806F0F001D631E /* AccountInfo.swift in Sources */,
 				1AD5932D2C846B6100BD5248 /* ActivateNewVIPView.swift in Sources */,
+				1A4680722C8991AD00D8BD61 /* OneDayStatisticsView.swift in Sources */,
 				1AD262912C7746EF00AF3E55 /* CartItem.swift in Sources */,
 				1A5EACB72C7859BE007971F8 /* SendRequest.swift in Sources */,
 				1AD2628A2C77455900AF3E55 /* OrderListView.swift in Sources */,
