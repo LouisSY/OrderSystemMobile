@@ -14,8 +14,13 @@ class NetworkStatisticsManager: ObservableObject {
     @Published var incomeDetail: [IncomeSummaryItem] = []
     @Published var orderDetail: [ProductAmount] = []
 
-    func fetchStatisticsJson() {
-        guard let url = URL(string: NSLocalizedString("statistics", comment: "URL for statistics")) else {
+    func fetchStatisticsJson(date: Date) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let dateString = formatter.string(from: date)
+        print("looking for date \(dateString)")
+        
+        guard let url = URL(string: "http://raspberrypi.local:8360/statistics/\(dateString)") else {
             print("Invalid URL")
             return
         }
@@ -49,7 +54,6 @@ class NetworkStatisticsManager: ObservableObject {
         do {
             let statistics = try JSONDecoder().decode(StatisticsData.self, from: jsonData)
             self.statisticsData = statistics
-            print("Parsed Statistics Data: \(statistics)")
             
             incomeDetail = statisticsData!.incomeSummary.map {
                 IncomeSummaryItem(category: $0.category, income: $0.income)
@@ -61,6 +65,10 @@ class NetworkStatisticsManager: ObservableObject {
             orderDetail = orderDetail.sorted(by: >)
         } catch {
             print("Failed to decode JSON: \(error)")
+            incomeDetail.removeAll()
+            orderDetail.removeAll()
+            statisticsData?.orderNum = 0
+            statisticsData?.incomeSum = "0"
         }
     }
 }
@@ -104,7 +112,7 @@ struct ProductAmount: Codable, Comparable, Identifiable {
 /// 接收到的jsonString的内容
 struct StatisticsData: Codable {
     let incomeSummary: [IncomeSummaryItem]
-    let incomeSum: String
-    let orderNum: Int
+    var incomeSum: String
+    var orderNum: Int
     let ordersDetails: [ProductAmount]
 }
