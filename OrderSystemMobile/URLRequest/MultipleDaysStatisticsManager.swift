@@ -13,7 +13,10 @@ struct CurrencyResponse: Codable {
     let cash: Double
     
     var sumCurrency: Double {
-        return Double(truncating: Decimal(eCurrency) + Decimal(cash) as NSDecimalNumber)
+        let eCurrencyRounded = Decimal(eCurrency).round(scale: 2)
+        let cashRounded = Decimal(cash).round(scale: 2)
+        let sum = eCurrencyRounded + cashRounded
+        return Double(truncating: sum as NSDecimalNumber)
     }
 }
 

@@ -23,6 +23,7 @@
 		1A7BC9A32C8741990023B898 /* OperationButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7BC9A22C8741990023B898 /* OperationButtonView.swift */; };
 		1A99992B2C7AD3770094D80A /* PhoneNumFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A99992A2C7AD3770094D80A /* PhoneNumFormatter.swift */; };
 		1A9999302C7AD5E30094D80A /* AmountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A99992F2C7AD5E30094D80A /* AmountFormatter.swift */; };
+		1A9BA7A12C89F69F00AF244D /* Decimal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BA7A02C89F69F00AF244D /* Decimal+Extensions.swift */; };
 		1A9D841F2C89B26C00406B31 /* MultipleDaysStatisticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9D841E2C89B26C00406B31 /* MultipleDaysStatisticsManager.swift */; };
 		1A9D84212C89D84B00406B31 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9D84202C89D84B00406B31 /* Date+Extensions.swift */; };
 		1AAB97432C79AA3300160C45 /* ProductCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB97422C79AA3300160C45 /* ProductCategory.swift */; };
@@ -67,6 +68,7 @@
 		1A7BC9A22C8741990023B898 /* OperationButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationButtonView.swift; sourceTree = "<group>"; };
 		1A99992A2C7AD3770094D80A /* PhoneNumFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumFormatter.swift; sourceTree = "<group>"; };
 		1A99992F2C7AD5E30094D80A /* AmountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountFormatter.swift; sourceTree = "<group>"; };
+		1A9BA7A02C89F69F00AF244D /* Decimal+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Extensions.swift"; sourceTree = "<group>"; };
 		1A9D841E2C89B26C00406B31 /* MultipleDaysStatisticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleDaysStatisticsManager.swift; sourceTree = "<group>"; };
 		1A9D84202C89D84B00406B31 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		1AAB97422C79AA3300160C45 /* ProductCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCategory.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			children = (
 				1AD2629D2C77497500AF3E55 /* View+Extensions.swift */,
 				1A9D84202C89D84B00406B31 /* Date+Extensions.swift */,
+				1A9BA7A02C89F69F00AF244D /* Decimal+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				1A4680722C8991AD00D8BD61 /* OneDayStatisticsView.swift in Sources */,
 				1AD262912C7746EF00AF3E55 /* CartItem.swift in Sources */,
 				1A5EACB72C7859BE007971F8 /* SendRequest.swift in Sources */,
+				1A9BA7A12C89F69F00AF244D /* Decimal+Extensions.swift in Sources */,
 				1AD2628A2C77455900AF3E55 /* OrderListView.swift in Sources */,
 				1A46806F2C896D3B00D8BD61 /* TestView.swift in Sources */,
 				1AD262932C77472B00AF3E55 /* Product.swift in Sources */,

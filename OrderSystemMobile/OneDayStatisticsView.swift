@@ -76,7 +76,7 @@ struct IncomeDashBoard: View {
                                 .font(.title2)
                                 .bold()
                             Spacer()
-                            Text("\(Decimal(Double(item.income) ?? 0))")
+                            Text(item.income)
                                 .font(.headline)
                         }
                         .frame(

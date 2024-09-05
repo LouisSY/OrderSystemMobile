@@ -52,7 +52,7 @@ class NetworkStatisticsManager: ObservableObject {
         do {
             let statistics = try JSONDecoder().decode(StatisticsData.self, from: jsonData)
             self.statisticsData = statistics
-            
+
             incomeDetail = statisticsData!.incomeSummary.map {
                 IncomeSummaryItem(category: $0.category, income: $0.income)
             }
