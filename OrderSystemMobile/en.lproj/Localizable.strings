@@ -1,0 +1,35 @@
+/* 
+  Localizable.strings
+  OrderSystemMobile
+
+  Created by Shuai Yuan on 23/08/2024.
+  
+*/
+
+// 点单
+"takeOrder" = "http://raspberrypi.local:8360/take-order/generic";
+"takeOrderlogin" = "http://raspberrypi.local:8360/take-order/login";
+"scanCard" = "http://raspberrypi.local:8360/take-order/card";
+
+// 数据分析
+"statistics" = "http://raspberrypi.local:8360/statistics";
+
+// 菜单
+"menu" = "http://raspberrypi.local:8360/menu";
+"updateMenu" = "http://raspberrypi.local:8360/update-menu";
+
+// 登录登月通行证
+"accountLogin" = "http://raspberrypi.local:8360/card/login";
+
+// 登月通行证相关操作
+"topup" = "http://raspberrypi.local:8360/card/topup";
+"newAccount" = "http://raspberrypi.local:8360/card/new-account";
+"balance" = "http://raspberrypi.local:8360/card/balance";
+"scanBalance" = "http://raspberrypi.local:8360/card/scan-balance";
+"reissue" = "http://raspberrypi.local:8360/card/reissue";
+
+// 更新菜单图片
+"getMenuImage1" = "http://raspberrypi.local:8360/menu/get-image1";
+"uploadMenuImage1" = "http://raspberrypi.local:8360/menu/upload-image1";
+"getMenuImage2" = "http://raspberrypi.local:8360/menu/get-image2";
+"uploadMenuImage2" = "http://raspberrypi.local:8360/menu/upload-image2";
