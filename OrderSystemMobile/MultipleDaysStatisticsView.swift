@@ -30,9 +30,9 @@ struct MultipleDaysStatisticsView: View {
                         Text("日期 \(selected.date.toString())")
                             .font(.title3)
                             .bold()
-                        selectedInfo(color: .blue, incomeTitle: "电子货币", amount: selected.currencyResponse.eCurrency)
-                        selectedInfo(color: .green, incomeTitle: "现金", amount: selected.currencyResponse.cash)
-                        selectedInfo(color: .orange, incomeTitle: "总收入", amount: selected.currencyResponse.sumCurrency)
+                        selectedInfo(color: .blue, incomeTitle: "电子货币", amount: "\(selected.currencyResponse.eCurrency)")
+                        selectedInfo(color: .green, incomeTitle: "现金", amount: "\(selected.currencyResponse.cash)")
+                        selectedInfo(color: .orange, incomeTitle: "总收入", amount: "\(selected.currencyResponse.sumCurrency)")
                     }
                 }
             }
@@ -153,11 +153,11 @@ struct MultipleDaysStatisticsView: View {
     }
     
     /// Display selected information
-    private func selectedInfo(color: Color, incomeTitle: String, amount: Double) -> some View {
+    private func selectedInfo(color: Color, incomeTitle: String, amount: String) -> some View {
         HStack {
             Circle().fill(color).frame(width: 12, height: 12)
             Text(incomeTitle)
-            Text(String(describing: amount))
+            Text(amount)
         }
     }
 }
