@@ -11,7 +11,7 @@ struct OperationButtonView: View {
     @Binding var phoneNum: String
     @Binding var starAmount: String
     
-    @State var isShowingSheet: Bool = true
+    @State var isShowingSheet: Bool = false
     @State var sheetType: NewCardOperation = .topup
     
     var body: some View {
@@ -267,7 +267,7 @@ struct OperationSheet: View {
         if starAmountText.isEmpty {
             return "--"
         } else {
-            return String(describing: Decimal(Double(starAmount) ?? 0) + Decimal(Double(starAmountText) ?? 0))
+            return String(describing: Decimal(Double(starAmount) ?? 0) + Decimal(Double(starAmountText) ?? 0) + Decimal(Double(giftAmountText) ?? 0))
         }
     }
     
@@ -276,7 +276,7 @@ struct OperationSheet: View {
         let topupRequest = TopUpRequest(
             username: phoneNum,
             starAmount: starAmountText,
-            giftAmount: "",
+            giftAmount: giftAmountText,
             paymentMethod: selectedPaymentMethod.rawValue
         )
         sendRequest(urlString: NSLocalizedString("topup", comment: "URL for topup"), requestBody: topupRequest) { result in

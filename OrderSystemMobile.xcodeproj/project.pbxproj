@@ -159,9 +159,9 @@
 			isa = PBXGroup;
 			children = (
 				1A3F8F1E2C804FEF001D631E /* NewVIPView.swift */,
-				1A7BC9A22C8741990023B898 /* OperationButtonView.swift */,
 				1A3F8F222C807266001D631E /* VIPLoginView.swift */,
 				1A3F8F242C80765C001D631E /* AccountInfoView.swift */,
+				1A7BC9A22C8741990023B898 /* OperationButtonView.swift */,
 				1AD5932C2C846B6100BD5248 /* ActivateNewVIPView.swift */,
 			);
 			name = VIPOperationPage;
