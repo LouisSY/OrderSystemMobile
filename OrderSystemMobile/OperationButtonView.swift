@@ -11,7 +11,7 @@ struct OperationButtonView: View {
     @Binding var phoneNum: String
     @Binding var starAmount: String
     
-    @State var isShowingSheet: Bool = false
+    @State var isShowingSheet: Bool = true
     @State var sheetType: NewCardOperation = .topup
     
     var body: some View {
@@ -66,7 +66,8 @@ struct OperationSheet: View {
     
     @State private var isEditing: Bool = false
     
-    @State private var text: String = ""
+    @State private var starAmountText: String = ""
+    @State private var giftAmountText: String = ""
     @State private var selectedPaymentMethod: PaymentMethod = .电子货币
     
     @Environment(\.colorScheme) var colorScheme
@@ -103,14 +104,15 @@ struct OperationSheet: View {
             
             Spacer()
             
-            // 原始金额
-            amountDisplay(colors: [.cyan, .blue], text: "原始储值金额：", amount: starAmount)
-            
             // 充值金额输入框
-            amountTextField
-            
-            // 新的储值金额
-            amountDisplay(colors: [.yellow, .orange], text: "新的储值金额：", amount: calculateNewAmount)
+            amountTextField(placeholder: "充值金额", icon: "dollarsign.circle", bindingText: $starAmountText)
+                .onChange(of: starAmountText) { oldValue, newValue in
+                    starAmountText = amountFormatter(oldValue: oldValue, newValue: newValue)
+                }
+            amountTextField(placeholder: "赠送金额", icon: "gift", bindingText: $giftAmountText)
+                .onChange(of: giftAmountText) { oldValue, newValue in
+                    giftAmountText = amountFormatter(oldValue: oldValue, newValue: newValue)
+                }
             
             // 选取支付方式
             paymentMethodSelector
@@ -120,20 +122,13 @@ struct OperationSheet: View {
                 isShowingSheet = false
             }
             
-            sheetButton(text: "确认充值", colors: [.cyan, .purple]) {
+            sheetButton(text: "确认充值", colors: starAmountText.isEmpty ? [.gray, .gray.opacity(0.7)] : [.cyan, .purple]) {
                 sendTopupRequest()
             }
             .padding(.vertical)
             .shadow(radius: 10)
             .padding(.bottom)
-            .overlay(
-                RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
-                    .opacity(text.isEmpty ? 0.3 : 0)
-                    .padding()
-                    .padding(.bottom)
-                    .padding(.horizontal)
-            )
-            .disabled(text.isEmpty)
+            .disabled(starAmountText.isEmpty)
         }
     }
     
@@ -192,40 +187,36 @@ struct OperationSheet: View {
                     .shadow(radius: 10)
             )
     }
-    
-    // 显示金额
-    private func amountDisplay(colors: [Color], text: String, amount: String) -> some View {
-        HStack {
-            Image(systemName: "star.fill")
-            
-            Text(text)
-                .bold()
-            Text(amount)
-        }
-        .font(.largeTitle)
-        .foregroundStyle(LinearGradient(colors: colors, startPoint: .leading, endPoint: .trailing))
-    }
-    
+
     /// 充值金额输入框
-    private var amountTextField: some View {
-        TextField("充值金额", text: $text, onCommit: {
-            isEditing = false
-        })
-        .textFieldStyle(
-            CommentTextFieldStyle(
-                isEditing: isEditing,
-                borderColors: [.cyan, .gray],
-                accentColor: .blue,
-                forgroundColor: .primary
+    @ViewBuilder
+    private func amountTextField(placeholder: String, icon: String, bindingText: Binding<String>) -> some View {
+        VStack(alignment: .leading) {
+            // 标题
+            HStack {
+                Image(systemName: icon)
+                Text(placeholder)
+            }
+            .font(.title3)
+            .bold()
+            
+            // 输入框
+            TextField(placeholder, text: bindingText, onCommit: {
+                isEditing = false
+            })
+            .textFieldStyle(
+                CommentTextFieldStyle(
+                    isEditing: isEditing,
+                    borderColors: [.cyan, .gray],
+                    accentColor: .blue,
+                    forgroundColor: .primary
+                )
             )
-        )
+            .shadow(radius: 10)
+            .keyboardType(.decimalPad)
+        }
         .padding(.horizontal)
         .padding()
-        .shadow(radius: 10)
-        .onChange(of: text) { oldValue, newValue in
-            text = amountFormatter(oldValue: oldValue, newValue: newValue)
-        }
-        .keyboardType(.decimalPad)
     }
     
     /// 选择支付方式
@@ -273,10 +264,10 @@ struct OperationSheet: View {
     
     /// 计算新的金额
     private var calculateNewAmount: String {
-        if text.isEmpty {
+        if starAmountText.isEmpty {
             return "--"
         } else {
-            return String(describing: Decimal(Double(starAmount) ?? 0) + Decimal(Double(text) ?? 0))
+            return String(describing: Decimal(Double(starAmount) ?? 0) + Decimal(Double(starAmountText) ?? 0))
         }
     }
     
@@ -284,9 +275,8 @@ struct OperationSheet: View {
     private func sendTopupRequest() {
         let topupRequest = TopUpRequest(
             username: phoneNum,
-            starAmount: text,
-            moonAmount: "0",
-            moonUnitPrice: "",
+            starAmount: starAmountText,
+            giftAmount: "",
             paymentMethod: selectedPaymentMethod.rawValue
         )
         sendRequest(urlString: NSLocalizedString("topup", comment: "URL for topup"), requestBody: topupRequest) { result in

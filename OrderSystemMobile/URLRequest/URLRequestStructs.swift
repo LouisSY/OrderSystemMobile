@@ -27,8 +27,7 @@ protocol MenuProtocol {
 /// 发送URL请求 储杯和储值权限
 protocol PrivilegeProtocol {
     var starAmount: String { get }
-    var moonAmount: String { get }
-    var moonUnitPrice: String { get }
+    var giftAmount: String { get }
 }
 
 /// 发送URL请求 支付方式
@@ -65,8 +64,7 @@ struct UpdateMenuRequest: Codable, MenuProtocol {
 struct TopUpRequest: Codable, LoginProtocol, PrivilegeProtocol, PaymentMethodProtocol {
     var username: String
     var starAmount: String
-    var moonAmount: String
-    var moonUnitPrice: String
+    var giftAmount: String
     var paymentMethod: String
 }
 
@@ -74,8 +72,7 @@ struct NewUserRequest: Codable, NameProtocol, LoginProtocol, PrivilegeProtocol, 
     var name: String
     var username: String
     var starAmount: String
-    var moonAmount: String
-    var moonUnitPrice: String
+    var giftAmount: String
     var paymentMethod: String
 }
 

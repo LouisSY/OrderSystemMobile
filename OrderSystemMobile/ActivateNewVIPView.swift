@@ -18,9 +18,11 @@ struct ActivateNewVIPView: View {
     @Binding var moonAmount: String
     @Binding var phoneNum: String
     
+    // textField Binding String
     @State var usernameText: String = ""
     @State var starAmountText: String = ""
     @State var phoneNumText: String = ""
+    @State var giftAmountText: String = ""
     @State var selectedPaymentMethod: PaymentMethod = .电子货币
     
     @State var isShowingSheet: Bool = false
@@ -60,6 +62,8 @@ struct ActivateNewVIPView: View {
     
     @ViewBuilder
     private var signupSheet: some View {
+        let disableButton: Bool = phoneNumText.count != 11 || usernameText.isEmpty || starAmountText.isEmpty
+        
         Text("注册新用户")
             .font(.system(size: 50))
             .bold()
@@ -67,16 +71,21 @@ struct ActivateNewVIPView: View {
                 LinearGradient(colors: [.red, .orange], startPoint: .topLeading, endPoint: .bottomTrailing)
             )
         
-        infoTextField(placeholderText: "姓名", bindingText: $usernameText)
+        infoTextField(placeholderText: "姓名", bindingText: $usernameText, icon: "person.crop.circle")
         
-        infoTextField(placeholderText: "手机号码", bindingText: $phoneNumText)
+        infoTextField(placeholderText: "手机号码", bindingText: $phoneNumText, icon: "phone.fill")
             .onChange(of: phoneNumText) { oldValue, newValue in
                 phoneNumText = phoneNumFormatter(phoneNum: newValue)
             }
 
-        infoTextField(placeholderText: "储值金额", bindingText: $starAmountText)
+        infoTextField(placeholderText: "储值金额", bindingText: $starAmountText, icon: "dollarsign.circle")
             .onChange(of: starAmountText) { oldValue, newValue in
                 starAmountText = amountFormatter(oldValue: oldValue, newValue: newValue)
+            }
+        
+        infoTextField(placeholderText: "赠送金额", bindingText: $giftAmountText, icon: "gift")
+            .onChange(of: giftAmountText) { oldValue, newValue in
+                giftAmountText = amountFormatter(oldValue: oldValue, newValue: newValue)
             }
         
         
@@ -96,21 +105,24 @@ struct ActivateNewVIPView: View {
                 .frame(width: 300)
                 .foregroundStyle(.white)
                 .background(
-                    LinearGradient(colors: [.purple, .indigo], startPoint: .leading, endPoint: .trailing),
+                    LinearGradient(colors: disableButton ? [.gray, .gray.opacity(0.7)] : [.purple, .indigo], startPoint: .leading, endPoint: .trailing),
                     in: RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
                 )
         }
-        .disabled(phoneNumText.count != 11 || usernameText.isEmpty || starAmountText.isEmpty)
+        .disabled(disableButton)
         .padding()
 
     }
     
     @ViewBuilder
-    private func infoTextField(placeholderText: String, bindingText: Binding<String>) -> some View {
+    private func infoTextField(placeholderText: String, bindingText: Binding<String>, icon: String) -> some View {
         VStack(alignment: .leading) {
-            Text(placeholderText)
-                .font(.title3)
-                .bold()
+            HStack {
+                Image(systemName: icon)
+                Text(placeholderText)
+            }
+            .font(.title3)
+            .bold()
             TextField(placeholderText, text: bindingText, onCommit: {
                 isEditing = false
             })
@@ -158,8 +170,7 @@ struct ActivateNewVIPView: View {
             name: usernameText,
             username: phoneNumText,
             starAmount: starAmountText,
-            moonAmount: "0",
-            moonUnitPrice: "",
+            giftAmount: giftAmountText,
             paymentMethod: selectedPaymentMethod.rawValue
         )
         sendRequest(urlString: NSLocalizedString("newAccount", comment: "URL for activating new account"), requestBody: newUserRequest) { result in
@@ -171,7 +182,7 @@ struct ActivateNewVIPView: View {
                 isShowingAlert = true
                 
                 username = usernameText
-                starAmount = starAmountText
+                starAmount = String(describing: (Decimal(string: starAmountText) ?? Decimal.zero) + (Decimal(string: giftAmountText) ?? Decimal.zero))
                 moonAmount = "0"
                 phoneNum = phoneNumText
                 
