@@ -170,11 +170,14 @@ struct OperationListView: View {
     }
     
     /// 显示用户卡信息视图，允许用户输入账号密码或使用 NFC 刷卡
+    @ViewBuilder
     private func userCardInfoView() -> some View {
         VStack {
             NavigationStack {
                 List {
+                    // 用户姓名
                     userInfoSection()
+                    // 账户余额
                     originalBalanceSection()
                     
                     if !userCardInfoParser.cardInfoDetails.cupDetails.isEmpty {
@@ -445,26 +448,8 @@ struct SubmitButton: View {
     }
 }
 
-/// 用户卡信息列表视图，显示用户的消费信息和积分/储值
-struct CardInfoListView: View {
-    @ObservedObject var userCardInfoParser: UserCardInfoParser
-    
-    var body: some View {
-        List {
-            Section(header: Text("账户详情")) {
-                Text("账号: \(userCardInfoParser.cardInfoDetails.username)")
-                Text("储值: \(userCardInfoParser.cardInfoDetails.pointDetails)")
-            }
-            Section(header: Text("杯数积分详情")) {
-                ForEach(userCardInfoParser.cardInfoDetails.cupDetails, id: \.self) { detail in
-                    Text("\(detail.name): \(detail.quantity) 杯")
-                }
-            }
-        }
-    }
-}
 
-
+/// 订单详情列表
 struct CartList: View {
     @ObservedObject var cartManager: CartManager
     
@@ -481,7 +466,7 @@ struct CartList: View {
 }
 
 
-// 订单详情列表中的每一行
+/// 订单详情列表中的每一行
 struct CartListItem: View {
     @ObservedObject var cartItem: CartItem
     var cartManager: CartManager
@@ -495,13 +480,13 @@ struct CartListItem: View {
                     Button(action: {
                         cartManager.cartListMinusOperation(cartItem)
                     }, label: {
-                        OperationButton(sign: "minus")
+                        operationButton(sign: "minus")
                     })
                     Text("\(cartItem.quantity)")
                     Button(action: {
                         cartManager.cartListPlusOperation(cartItem)
                     }, label: {
-                        OperationButton(sign: "plus")
+                        operationButton(sign: "plus")
                     })
                 }
                 .frame(minWidth: 50)
@@ -511,13 +496,9 @@ struct CartListItem: View {
             .padding(.horizontal, geometry.size.width * 0.1)
         }
     }
-}
-
-//订单列表中的按钮
-struct OperationButton: View {
-    var sign: String
     
-    var body: some View {
+    ///订单列表中增加或减少商品数量的按钮
+    private func operationButton(sign: String) -> some View {
         Image(systemName: sign)
             .frame(width: 50, height: 20)
             .background(.pickerBackground, in: RoundedRectangle(cornerSize: CGSize(width: 5, height: 5)))
@@ -525,7 +506,8 @@ struct OperationButton: View {
 }
 
 
-// 自定义备注TextFieldStyle
+
+/// 自定义备注TextFieldStyle
 struct CommentTextFieldStyle: TextFieldStyle {
     var isEditing: Bool
     var borderColors: [Color] = [
